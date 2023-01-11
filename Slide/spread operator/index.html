@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+ 'user strict';
+
+const restaurant = {
+   nameRestaurant: '5 sao',
+   location: 'Hanoi',
+   categories: [
+     'Bánh xèo',
+     'Bánh bèo',
+     'Bánh đậu xanh',
+     'Bánh mì'
+   ],
+   startedMenu: [
+     'Nước uống ',
+     'Bánh',
+     'Combo nước banh'
+   ],
+   mainMenu : [
+     'Mon Tráng miệng',
+     'Nước lọc'
+   ],
+   openingHours: {
+     t5: {
+       open: 12,
+       close: 22,
+     },
+     t6: {
+       open: 8,
+       close: 20,
+     },
+     t7: {
+       open: 0,
+       close: 14,
+     },
+   },
+   order : function(startIndex, mainIndex){
+     return [this.startedMenu[startIndex], this.mainMenu[mainIndex]];
+   },
+   newFood : function(food1,food2,foo3){
+
+    console.log( `Thực đơn hôm nay gồm 3 món: ${food1}, ${food2}, ${foo3} thưởng thức nhen ~~~ `);
+   }
+   
+};
+
+//ví dụ cho một mảng mới, muốn lấy ra các phần tử cho vào một mảng a thì sẽ có cách thông thường như sau:
+const arr = [7,8,9];
+const badArr = [1,2,arr[0], arr[1]];
+console.log(badArr);
+// toán tử operator
+const ArrNew = [1,2,...arr];
+console.log(ArrNew);
+//thêm phần tử vào mảng mà nằm trong một object
+const arrNew2 = [...restaurant.mainMenu, 'aaaaaa'];
+console.log(arrNew2);
+//Coppy array
+const arrCopy = [...restaurant.mainMenu];
+//Mix 2 array 
+const arrCopymix = [...restaurant.mainMenu,...ArrNew];
+console.log(arrCopymix);
+//tạo một phương thức mới có tên là món mới: newfood
+//truyền dữ liệu vào và thực hiện đẩy toán tuwr operator vào trong nó
+const nameFood = [
+    // prompt('Mon 1: '),prompt('Mon 2: '),prompt('Mon 3: ')
+  ];
+console.log(nameFood);
+restaurant.newFood(...nameFood);
+//Thêm object mới vào mảng ban đầu bằng biến mới
+const objectNew = {founded: 'Hanbin',...restaurant,audience: 5};
+const foundedNew = [...objectNew.founded, 'Hanni','Ngo ngoc hung'];
+
+console.log(objectNew);
+console.log(foundedNew);
+//Kết hợp giữa destructor và operator
+
+const [water, , combo,...others] = [...restaurant.startedMenu,...restaurant.mainMenu];
+console.log( [water, , combo,...others]);
+
+</script>
+</html>
