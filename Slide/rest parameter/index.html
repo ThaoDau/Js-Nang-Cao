@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         'user strict';
+
+const restaurant = {
+   nameRestaurant: '5 sao',
+   location: 'Hanoi',
+   categories: [
+     'Bánh xèo',
+     'Bánh bèo',
+     'Bánh đậu xanh',
+     'Bánh mì'
+   ],
+   startedMenu: [
+     'Nước uống ',
+     'Bánh',
+     'Combo nước banh'
+   ],
+   mainMenu : [
+     'Mon Tráng miệng',
+     'Nước lọc'
+   ],
+   openingHours: {
+     t5: {
+       open: 12,
+       close: 22,
+     },
+     t6: {
+       open: 8,
+       close: 20,
+     },
+     t7: {
+       open: 0,
+       close: 14,
+     },
+   },
+   order : function(startIndex, mainIndex){
+     return [this.startedMenu[startIndex], this.mainMenu[mainIndex]];
+   },
+   newFood : function(food1,food2,foo3){
+
+    console.log( `Thực đơn hôm nay gồm 3 món: ${food1}, ${food2}, ${foo3} thưởng thức nhen ~~~ `);
+   }
+   
+};
+
+//lấy theo toán tử rest, nhưng nó phải là vòng lặp , như ở đây restaurant nó không phải vòng lặp nên nó lỗi
+const {t7, ...thuKhac}= restaurant.openingHours;
+console.log(thuKhac);
+
+// const [categories,...others1] = restaurant;
+// console.log(others1); lỗi to đùng
+
+//-------------------- 2> chức năng cơ bản của rest ---------------
+//  +> Sử dụng truyền nhiều đối số vào hàm cùng một lúc
+
+// nó có thể truyền vào nhiều đối số, ví dụ muốn truyền vào nhiều món trong thực đơn thì sẽ dùng đến ... được coi là đối số nghỉ
+const add = (...numbers) => {
+    let sum = 0;
+    for(let i = 0; i < numbers.length; i++){
+        sum += numbers[i];
+    }
+    console.log(sum);
+}
+add(2,3);
+add(2,3,5,8);
+add(2,3,9,10,45,56,46,20);
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

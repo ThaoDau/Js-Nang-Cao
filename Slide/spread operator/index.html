@@ -19,7 +19,7 @@ const restaurant = {
      'Bánh xèo',
      'Bánh bèo',
      'Bánh đậu xanh',
-     'Bánh mì'
+     'Bánh mì',
    ],
    startedMenu: [
      'Nước uống ',
@@ -85,7 +85,8 @@ console.log(foundedNew);
 //Kết hợp giữa destructor và operator
 
 const [water, , combo,...others] = [...restaurant.startedMenu,...restaurant.mainMenu];
-console.log( [water, , combo,...others]);
+console.log( 'Bao gồm ' + [water, combo,...others]);
+
 
 </script>
 </html>
