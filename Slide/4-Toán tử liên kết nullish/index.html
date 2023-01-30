@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const restaurant = {
+   nameRestaurant: '5 sao',
+   location: 'Hanoi',
+   categories: [
+     'Bánh xèo',
+     'Bánh bèo',
+     'Bánh đậu xanh',
+     'Bánh mì'
+   ],
+   startedMenu: [
+     'Nước uống ',
+     'Bánh',
+     'Combo nước banh'
+   ],
+   mainMenu : [
+     'Mon Tráng miệng',
+     'Nước lọc'
+   ],
+   openingHours: {
+     t5: {
+       open: 12,
+       close: 22,
+     },
+     t6: {
+       open: 8,
+       close: 20,
+     },
+     t7: {
+       open: 0,
+       close: 14,
+     },
+   },
+   order : function(startIndex, mainIndex){
+     return [this.startedMenu[startIndex], this.mainMenu[mainIndex]];
+   },
+   newFood : function(food1,food2,foo3){
+
+    console.log( `Thực đơn hôm nay gồm 3 món: ${food1}, ${food2}, ${foo3} thưởng thức nhen ~~~ `);
+   },
+   oderPizaa: function(main,...othermain){
+    console.log(main);
+    console.log(othermain);
+   }
+   
+};
+console.log('-------------------OR--------------------');
+//Những toán tử cấm '0, null, '', undefined, false ,NaN'
+//Lệnh logic nó sẽ đọc từ trái sang phải . Toán tử or nó nhận giá trị Cấm bên trên nên là nỏ sé nhận giá trị khác 
+//Toán tử circuiting 
+console.log(3 || 'Jonas'); // return 3
+console.log('' || 'JOnas');// return jonas
+console.log(true || 0);// return true
+console.log(undefined || null );// return null
+console.log(undefined || 0 || '' || 'Hello' || 23 || null ||'ThaoDau'); // return hello
+// giải thích lí do chọn hello vì nó làm ngắn mạch toàn bộ 
+
+
+// nếu đặt thuộc tính khách  là 23 thì nó sẽ có biến mới
+restaurant.numGuests = 23;
+
+
+//check trong một đối tượng có mảng mình cần tìm hay ko bằng tạo  biến và dùng toán tử 3 ngôi
+const  guest1 = restaurant.numGuests ? restaurant.numGuests : 'Không tồn tại';
+        console.log(guest1);
+// sử dụng giá trị mới cho guest 2: 
+const guest2 = restaurant.numGuests || 20;   // ở đây nó nhận giá trị đầu , đó là giá trị trung thực, nếu khi numguest ko tồn tại , thì giá trị so sánh với  là undefined , nó sẽ nhận 20
+        console.log(guest2);
+
+console.log('-------------------AND--------------------');
+//Những toán tử cấm '0, null, '', undefined, false ,NaN'
+//Lệnh logic nó sẽ đọc từ trái sang phải . Toán tử and nó sẽ nhận nếu trong chuỗi có giá trị cấm thì ưu tiên nhận . Sẽ nhận kết quả sau cùng
+console.log(0 && 'ThaoDau'); 
+console.log('Hi' && undefined); 
+console.log('Hi'&&'Thao'&& 'Có gì đâu' );//co gi dau
+
+//SỰ KHÁC NHAU GIỮA AND VÀ OR LÀ : Nếu không có từ cấm thì and lấy đứa cuối , còn or lấy đứa đầu  từ trái sang phải . Có từ cấm : or bỏ qua lấy giá trị tiếp , and lấy luôn đứa có giá trị đầu
+
+//vd thực tế : check kiểm tra xem trong object có thuộc tính này hay ko
+if (restaurant.oderPizaa) {
+  restaurant.oderPizaa('ThaoDau','get');
+}
+//chúng ta có thể dùng toán tử and 
+ restaurant.oderPizaa && restaurant.oderPizaa('thaodau','get');
+
+ console.log('------------Toán tử liên kết nulissh');
+//Cho một giá trị numguest mới 
+
+restaurant.numGuests =0;//nếu ở đây là undefined
+const guests1 = restaurant.numGuests || 10; // 10
+console.log(guests1);//10 vì giá trị numguest là giá trị cấm
+
+//Giải pháp :
+//toán tử liên kết nuliish nó nhận giá trị undefined hoặc null [ko nhận 0 hoặc '']  
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);//0// nếu là undefined thì nó return 10
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

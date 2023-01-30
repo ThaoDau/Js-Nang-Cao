@@ -48,6 +48,10 @@ const restaurant = {
    newFood : function(food1,food2,foo3){
 
     console.log( `Thực đơn hôm nay gồm 3 món: ${food1}, ${food2}, ${foo3} thưởng thức nhen ~~~ `);
+   },
+   oderPizaa: function(main,...othermain){
+    console.log(main);
+    console.log(othermain);
    }
    
 };
@@ -74,8 +78,14 @@ add(2,3);
 add(2,3,5,8);
 add(2,3,9,10,45,56,46,20);
 
+//level 2: CHo một mảng mới, tự tính
+const a = [4,9,12];
+add (...a);
+//level 3: Cho một function mới có tên là oderpizza , hai tham số là main và các mảng othermain. NV: lọc cái nào thuộc main và cái nào othermain
+//biến như sau:
+restaurant.oderPizaa('Kẹo ngọt','Số 1','Số 2','Số 3');
 
-
+// KL: toán tử spread sử dụng khi chúng ta viết các giá trị, phân tách bằng dấu phẩy
 
 
 
