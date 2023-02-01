@@ -53,6 +53,31 @@ const restaurant = {
    }
    
 };
+const rest1 ={
+  name:'Thang1',
+  numGuests: 30,
+}
+const rest2 = {
+  name:'Thang2',
+  owner: 'ThaoDau',
+}
+//Giá trị numguest 2 sẽ nhận giá trị mới đó là 10
+rest1.numGuests = rest1.numGuests || 10;
+rest2.numGuests = rest1.numGuests || 10;
+console.log(rest1);
+console.log(rest2);
+//ngắn gọn hơn
+rest1.numGuests ||= 10;
+rest2.numGuests ||=  10;
+rest1.numGuests ??= 10;
+rest2.numGuests ??=  10;
+rest1.owner= rest1.owner && '<ANONYMOUS>';
+  rest2.owner= rest2.owner && '<ANONYMOUS>';
+    //viết ngắn gọn:
+    rest1.owner &&= 10;
+rest2.owner &&=  10;
+    console.log(rest1);
+console.log(rest2);
 console.log('-------------------OR--------------------');
 //Những toán tử cấm '0, null, '', undefined, false ,NaN'
 //Lệnh logic nó sẽ đọc từ trái sang phải . Toán tử or nó nhận giá trị Cấm bên trên nên là nỏ sé nhận giá trị khác 
