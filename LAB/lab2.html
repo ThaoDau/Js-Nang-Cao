@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script >
+    const gameEvents = new Map(
+        [
+            [17,'Goal'],
+            [36,'Substitution'],
+            [47,'Goal'],
+            [61,'Substitution'],
+            [64,'Yellow card'],
+            [69,'Red card'],
+            [70,'Substitution'],
+            [72,'Substitution'],
+            [76,'Goal'],
+            [80,'Goal'],
+            [92,'Yellow card'],
+        ]
+    );
+//1. 
+console.log(gameEvents.values());
+const events =[...new Set (gameEvents.values())] ;
+console.log(events);
+// 2
+gameEvents.delete(64);
+// 3
+console.log(`Mỗi trận đấu diễn ra, có trung bình ${90/gameEvents.size } phuts `);
+const time = [...gameEvents.keys()].pop();
+console.log(time);
+// 4
+console.log('-------bai2-------');
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+document.querySelector('button').addEventListener('click',function(){
+    const text = document.querySelector('textarea').value;
+    const rows = text.split('\n');
+    for (const row of rows) {
+        const [first, second] = row.toLowerCase().trim().split('_');
+        const output = `${first} ${second.replace(second[0],second[0].toUpperCase())
+    }`;
+    console.log(`${output.padEnd(20)}${'tick ><'.repeat(i+1)}`);
+    }
+
+})
+</script>
+</html>
