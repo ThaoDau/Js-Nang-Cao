@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+ 'user strict';
+
+const restaurant = {
+   nameRestaurant: '5 sao',
+   location: 'Hanoi',
+   categories: [
+     'Bánh xèo',
+     'Bánh bèo',
+     'Bánh đậu xanh',
+     'Bánh mì',
+   ],
+   startedMenu: [
+     'Nước uống ',
+     'Bánh',
+     'Combo nước banh'
+   ],
+   mainMenu : [
+     'Mon Tráng miệng',
+     'Nước lọc'
+   ],
+   openingHours: {
+     t5: {
+       open: 12,
+       close: 22,
+     },
+     t6: {
+       open: 8,
+       close: 20,
+     },
+     t7: {
+       open: 0,
+       close: 14,
+     },
+   },
+   
+   order : function(startIndex, mainIndex){
+     return [this.startedMenu[startIndex], this.mainMenu[mainIndex]];
+   },
+  // cách ngắn gọn :
+  // order :(startIndex, mainIndex){
+  //    return [this.startedMenu[startIndex], this.mainMenu[mainIndex]];
+  //  },
+   newFood : function(food1,food2,foo3){
+
+    console.log( `Thực đơn hôm nay gồm 3 món: ${food1}, ${food2}, ${foo3} thưởng thức nhen ~~~ `);
+   }
+   
+};
+// là một obj dùng để lưu trữ một tập hợp giá trị không lặp. tạo ra obj mới với các thuộc tính thêm sửa xóa lấy phần tử trong tập hợp đó
+
+const arr = [
+    'a','b','e','a','e',
+];
+const orderSet = new Set(arr);
+console.log(orderSet);//Set(3) {'a', 'b', 'e'}
+console.log(arr);//(5) ['a', 'b', 'e', 'a', 'e']
+//Truyền chuỗi
+console.log(new Set('Thao')); // Set(4) {'T', 'h', 'a', 'o'}
+//lấy size trong set
+console.log(orderSet.size);//3
+// Áp dụng vd cụ thể cho bao nhiêu bữa ăn trong 1 lần nấu
+// kiểm tra phần tử có tồn tại ko: dùng method has
+console.log(orderSet.has('Dau'));//false
+console.log(orderSet.has('e'));//true
+//Thêm phần tử vào tập hợp
+console.log(orderSet.add('Fire'));//Set(4) {'a', 'b', 'e', 'Fire'}
+// xóa
+orderSet.delete('a');
+
+//xóa tất cả các tập hợp
+// orderSet.clear();
+console.log(orderSet);
+// lấy giá trị ra khỏi tập hợp
+for (const order of orderSet) {
+    console.log(order);
+}
+// Expamle:
+const staff = ['waiter','chef','waiter','manager'];
+// cho nó vào một mảng 
+
+const staffSet = [...new Set(staff)];
+console.log(staffSet);//Set(3) {'waiter', 'chef', 'manager'}
+console.log('-----------------map---------------------');
+//khác biệt giữa object và map là map là key có thể là bất kì loại nào, obj là chuỗi
+const rest = new Map();
+// khởi tạo set từ map
+//Thêm phần tử map dùng set: map.set(key, value) : key là khóa , value giá trị
+rest.set('name','Classical');//0 => 'name' => 'Classical' nó nhận làm mảng 
+rest.set(1,'Fire,Italy');
+rest.set(2,'Fireeeee,Italyyyy');
+console.log(rest.set(2,'nameeeeeee'));//Map(3) {'name' => 'Classical', 1 => 'Fire,Italy', 2 => 'nameeeeeee'}
+
+// có thể khởi tạo bằng 
+rest
+    .set('name1','Coooooo1',['Thao','Vo','Hai','Cuong'])
+    .set('open',11)
+    .set('close',23)
+    .set(true,'Có mở cửa')
+    .set(false,'we are closed')
+console.log(rest.get('name1'));
+console.log(rest.get(true));
+
+//Lấy ra 1 value từ key: dùng get 
+
+
+const time  = 8;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));//we are closed
+console.log('---------method---------');
+
+//Phương thức có sẵn trong map : đẳt và lấy
+//Thêm mảng vào map 
+rest.set([1,2],'testttt');
+//kiểm tra tồn tại : has
+console.log(rest.has('name')); // trả ra boolean: true
+rest.delete(2);// ko khuyến khích dùng
+
+//kích thước
+console.log(rest.size);
+//xoas het clear
+console.log(rest);
+const question = new Map([
+  ['ques','Wthat is the best?'],
+  [1,'C'],
+  [2,'Java'],
+  [3,'JS'],
+  ['correct',3],
+  [true,'correct.......'],
+  [false,'try again'],
+]);
+console.log(question);
+console.log(Object.entries(restaurant.openingHours));
+//chuyển qua map 
+const hourMap = new Map(Object.entries(restaurant.openingHours));
+console.log(hourMap);
+//loop 
+for (const [i,ol] of question) {
+  
+  if (typeof i === 'number') {
+    console.log(`anser ${i} - ${ol}`);
+  }
+}
+const anser = Number(prompt('Your answer'))
+console.log(anser);
+console.log(question.get(question.get('correct') ===  anser)); 
+
+// chuyển map về mảng đơn giản
+
+console.log([...question]);
+// hoac
+console.log([...question.keys()]);
+console.log([...question.entries()]);
+console.log([...question.values()]);
+</script>
+</html>
