@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
++ Mảng: 
++Object thì có phương thức và thuộc tính
+</body>
+<script>
+console.log('-----Thao tác xử lý mảng--------');
+const ngoaihanganh = new Array("mancity",'newcastle');
+console.log(ngoaihanganh);
+//1. Duyệt
+for (const item of ngoaihanganh) {
+    console.log(item);// duyet value
+}
+for (const index in ngoaihanganh) {
+    console.log(index);// duyet index
+}
+const arr = [1, 2, 3];
+arr.forEach(function(element, index, array) {
+  console.log(element, index, array);
+});
+
+//method: 
+ngoaihanganh.forEach(function (team,index) {
+    console.log(team + "_" +index);
+} );
+
+
+//2. Thêm 
+ngoaihanganh.push("tottenham")
+console.log(ngoaihanganh);
+//splice 
+//chiều dài mảng : const length = ngoaihanganh.length
+//3.Xóa
+//1: tìm index 
+// 2: dùng hàm xóa
+const index = ngoaihanganh.indexOf("tottenham");
+//slice
+ngoaihanganh.splice(index,1);
+console.log(ngoaihanganh);
+
+//4.Sửa
+const index2 = ngoaihanganh.indexOf("newcastle");
+ngoaihanganh[index2] = 'thaodau';
+console.log(ngoaihanganh);
+//map 
+const newArray = ngoaihanganh.map(function (team,index) {
+    if(team == 'mancity'){
+        return "MU";
+    }else{
+        return team;
+    }
+})
+console.log(newArray);
+
+const animals = [
+  {id: 1, name: "A"},
+  {id: 2, name: "B"},
+  {id: 3, name: "C"}
+];
+const newAnimal = {
+   id: 2, name: "b update"
+}
+const newAnimals = animals.map(animal => {
+	return animal.id == newAnimal.id ? newAnimal : animal;
+})
+
+console.log(newAnimals);
+
+
+
+
+
+//5.Tìm kiếm
+const team = ngoaihanganh.find(function(team){
+    return team.toLowerCase() == "man city".toLowerCase();
+})
+console.log(team);//undefined
+
+//6.Lọc
+//filter
+const filtered = ngoaihanganh.filter(function(){
+    return team == "man city";
+});
+console.log(filtered);
+
+
+
+</script>
+</html>
